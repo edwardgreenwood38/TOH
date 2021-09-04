@@ -158,6 +158,7 @@
                         <p>The function receives the array of numbers as a parameter. We then create a string to hold the resulting html code generated for display.</p>
                         <p>We then use a for loop to iterate over the number array. We check each number to see if it is even or odd, by dividing the number by 2 and checking if the remainder is 0.  the is achieved by using the '%' (modis) operand.</p>
                         <p>If the remainder is 0 the the statement is true and the literal with html code in it is added to the string. We place the bold tag around the number output. If the remainder is 1 the the else staement is run and we add the html code without the bold tags.</p>
+                        <p>Once the for loop completes, we then use document.getelementbyid to find the tag with the id of results. We then place the string we generated into the innerHtml propery.</p>
                         <p>Note: the striping look is achieved by use of BootStrap classes applied to the table holding the numbers.</p>
                     </article>
                 </div>
