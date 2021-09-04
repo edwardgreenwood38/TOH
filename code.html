@@ -64,17 +64,102 @@
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        // call helloworld
-                        function HelloWorld() {
-                            alert("hello world");
+                    // get values from the page
+                    // starts or controller function
+                    function getValues() {
+                        // get values from the page
+                        let startValue = document.getElementById("startValue").value;
+                        let endValue = document.getElementById("endValue").value;
+
+                        // we need to validate our input
+                        // convert to int
+                        startValue = parseInt(startValue);
+                        endValue = parseInt(endValue);
+
+                        // check if int
+                        if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                            // call genrateNumbers
+                            let numbers = generateNumbers(startValue, endValue);
+
+                            // call displayNumbers
+                            displayNumbers(numbers);
+                        } 
+                        else {
+                            alert("You must enter integers");
                         }
+                    }
+
+
+                    // generate from start value to end value
+                    // logic function(s)
+                    function generateNumbers(sValue, eValue) {
+
+                        let numbers = [];
+
+                        // we wnat to get all numbers from start to end
+                        for (let i = sValue; i <= eValue; i++) {
+                            numbers.push(i); 
+                        }
+
+                        return numbers;
+                    }
+
+
+                    // dsiplay the nubmers and mark even number bold
+                    // display or view fucntions
+                    function displayNumbers(n) {
+                        // to hold html
+                        let templateRows = "";
+
+                        for (let i = 0; i < n.length; i++) {
+                            let number = n[i];
+
+                            //check if even
+                            if (number % 2 == 0)
+                            {
+                                templateRows += `<tr><td><b>${number}</b></td></tr>`;
+                            }
+                            else
+                            {
+                                templateRows += `<tr><td>${number}</td></tr>`;
+                            }
+                            
+                        }
+
+                        document.getElementById("results").innerHTML = templateRows;
+                    }
                     </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>HelloWorld</h5>
-                    <p>helloworld is a fucntion that displays an alert with a message of "Hello World"</p>
+                    <p>The Code is structured with three functions.</p>
+
+                    <article>
+                        <h5>getValues</h5>
+                        <p>getValues is a fucntion that retrieves the start value and end value for the inputs.</p>
+                        <p>The function then converts (parse) the string values to an integer. Next we check each value to see if it is a number.</p>
+                        <p>If it is a number the application proceeds to call the function generateNumbers by passing the startValue and endValue as parameteres. If it is not a number (NaN) then it shows an alert informing the user that they need to enter integers only.</p>
+                    </article>
+                    
+                    <br>
+
+                    <article>
+                        <h5>generateNumbers</h5>
+                        <p>generateNumbers is a function that generates an arry of all the numbers between the start value and the end value. It has two parameters that receive and hold the values passed in from the previous function getValues.</p>
+                        <p>It creates a new variable as an array to store the numbers generated. It then uses a for loop to iterate over every number between the start value and the end value, adding each number to the array using push.</p>
+                        <p>It then returns the value of the array back to the calling function.</p>
+                    </article>
+                    
+                    <br>
+
+                    <article>
+                        <h5>displayNumbers</h5>
+                        <p>displayNumbers is a function used to display the array with even numbers being <b>Bold</b>.</p>
+                        <p>The function receives the array of numbers as a parameter. We then create a string to hold the resulting html code generated for display.</p>
+                        <p>We then use a for loop to iterate over the number array. We check each number to see if it is even or odd, by dividing the number by 2 and checking if the remainder is 0.  the is achieved by using the '%' (modis) operand.</p>
+                        <p>If the remainder is 0 the the statement is true and the literal with html code in it is added to the string. We place the bold tag around the number output. If the remainder is 1 the the else staement is run and we add the html code without the bold tags.</p>
+                        <p>Note: the striping look is achieved by use of BootStrap classes applied to the table holding the numbers.</p>
+                    </article>
                 </div>
             </div>
         </div>
@@ -94,7 +179,7 @@
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
                         <div class="col social"><a href="https://www.linkedin.com/in/edward-g-4367a054" target="_blank"><img src="/img/LI-In-Bug.png" width="32px" height="32px"></a></div>
-                        <div class="col social"><a href="#" target="_blank"><img src="/img/GitHub-Mark-Light-32px.png" width="32px" height="32px"></a></div>
+                        <div class="col social"><a href="https://github.com/edwardgreenwood38" target="_blank"><img src="/img/GitHub-Mark-Light-32px.png" width="32px" height="32px"></a></div>
                         <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                     </div>
                 </div>
